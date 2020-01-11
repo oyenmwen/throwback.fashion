@@ -8,5 +8,8 @@ root'pages#home'
 # get 'products', to: 'pages#products'
 get 'contact', to: 'pages#contact'
 get 'cart', to: 'pages#cart'
+get 'products/:id/buy', to: 'products#buy'
+post 'buy', to: 'pages#buy'
+get 'cart', to: 'pages#cart'
 
 end

@@ -1,3 +1,5 @@
+<%= javascript_pack_tag 'product' %>
+
 <p id="notice"><%= notice %></p>
 
 <div class ="container">
@@ -6,24 +8,31 @@
   <img src="https://assets.bigcartel.com/product_images/244444370/NAS-TEEEE.png?auto=format&fit=max&w=1200" />
 </div>
 <div class="col col-md-4 col-12">
-  <h3 class="font-weight-bold">
-    <%= @product.title %>
-  </h3>
+  <h3 class="font-weight-bold" id="product-title"><%=@product.title%></h3>
 
   <p>
     <%= @product.description %>
   </p>
 
-  <h3 class="font-weight-bold">
-    $<%= @product.price %>
-  </h3>
-  <select id="size" name="size">
-    <% @sizes.each do |size|  %>
-    <option value="<%= size.size %>"><%= size.size %></option>
-    <% end %>
-  </select><br>
-  <button  class="btn btn-lg btn-primary">Buy Now</button><br>
-  <button  class="btn btn-lg btn-secondary">Add to Cart</button>
+  <h3 class="font-weight-bold" id="product-price">$<%=@product.price%></h3>
+  <form action="/buy" method="post">
+    <input type="hidden" name="product[title]" value="<%= @product.title %>">
+    <input type="hidden" name="product[price]" value="<%= @product.price %>">
+    <select id="size" name="size">
+      <% @sizes.each do |size|  %>
+      <option value="<%= size.size %>"><%= size.size %></option>
+      <% end %>
+    </select><br>
+    <select id="qty" name="qty">
+      <% 10.times do |i|  %>
+      <option value="<%= i+1 %>"><%= i+1 %></option>
+      <% end %>
+    </select><br>
+    <%# <%= link_to 'Buy Now', "/products/"+@product.id.to_s+"/buy"%> %>
+    <a href="/cart" id="add-item" class="btn btn-lg btn-primary">Buy Now</a><br>
+    <button  type="submit" class="btn btn-lg btn-secondary">Add to Cart</button>
+
+  </form>
 
 </div>
   </div>

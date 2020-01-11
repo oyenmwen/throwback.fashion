@@ -11,6 +11,7 @@ class ProductsController < ApplicationController
   # GET /products/1.json
   def show
     @sizes = Size.all
+
   end
 
   # GET /products/new
@@ -60,6 +61,10 @@ class ProductsController < ApplicationController
       format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def buy
+    @product = Product.find(params[:id])
   end
 
   private
