@@ -81,7 +81,7 @@ location.reload();
           </select>
           </div>
           <div class="col col-md-1 price">
-          $${price}
+          $${price.toFixed(2)}
           </div>
           </div>
           `);
