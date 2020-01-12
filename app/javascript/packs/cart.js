@@ -1,3 +1,4 @@
+// esversion: 9
 $(document).ready(function() {
   var items;
   const stored = localStorage.getItem('items');
@@ -6,117 +7,81 @@ $(document).ready(function() {
   } else {
     items = [];
   }
-populateItems();
+  populateItems();
 
-$('#qty').change(function() {
+  $('.qty').change(function() {
+    let zeroes = false;
+    const size = $(this).closest(".row").find(".size").text();
+    const title = $(this).closest(".row").find(".title").text();
     if ($(this).val() == '0') {
       $(this).closest('.row').empty();
-
+      zeroes = true;
     }
+    items.forEach(e => {
+      if (e.title.trim() == title.trim() && e.size.trim() == size.trim()) {
+        e.qty = Number($(this).val());
+      }
+      console.log($(this).val());
+    });
+    if (zeroes) {
+      deleteItems();
+    }
+    localStorage.setItem('items', JSON.stringify(items));
+location.reload();
 
-      items.forEach(e => {
-        if (e.title.trim() == $('#product-title').text().trim() && e.size.trim() == $('#size').val().trim()) {
-          e.qty += 1;
-          found = true;
-        }
-      });
+  });
 
-});
-  // function addItems() {
-  //   let found = false;
-  //   items.forEach(e => {
-  //     if(e.title == $('#product-title').val() && e.size == $('#size').val()){
-  //       e.qty +=1;
-  //       found = true;
-  //     }
-  //   });
-  //   if(!found){
-  //   items.push({
-  //     title: $('#product-title').val(),
-  //     price: $('#product-price').val(),
-  //     size: $('#size').val(),
-  //     qty: 1
-  //   });
-  // }
+  // $('#clear').on("click", () => {
+  //   items = [];
+  //   $("#items").empty();
+  //   populateItems();
   //   localStorage.setItem('items', JSON.stringify(items));
-  // }
-  $('#clear').on("click", () => {
-    items = [];
-    $("#items").empty();
-    populateItems();
-    localStorage.setItem('items', JSON.stringify(items));
-  });
+  // });
 
-  $('#delete-item').on("click", () => {
-    $("#items").empty();
-    populateItems();
-    localStorage.setItem('items', JSON.stringify(items));
-  });
+  function deleteItems() {
+    let temp = [];
+    items.forEach(e => {
+      if (e.qty != 0) {
+        temp.push(e);
+      }
+    });
+    items = temp;
+  }
 
   function populateItems() {
     if (items.length === 0) {
       $('#empty-info').show();
     } else {
       $('#empty-info').hide();
-      // $("#items").empty();
+      $("#items").empty();
       items.forEach(item => {
-        $('#items').append("<p class='text-dark stuff'><span class='text-primary'>" + item.qty + "</span>" + " " + item.title + " " + item.size + "</p>");
+        const price = Number(item.price.substr(1)) * item.qty;
+        $('#items').append(`
+          <div class="row">
+          <div class="col col-md-4">
+          </div>
+          <div class="col col-md-4 title">
+          ${item.title}
+          </div>
+          <div class="col col-md-1 size">
+          ${item.size}
+          </div>
+          <div class="col col-md-1">
+          <select class="qty" name="qty">
+          <option value="0">0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          </select>
+          </div>
+          <div class="col col-md-1 price">
+          ${price}
+          </div>
+          </div>
+          `);
       });
     }
   }
-
-  // $('#add-item').on("click", () => {
-  //   addItems();
-  //   populateItems();
-  // });
-
-
-
-
-
-
-
-
-
-  // populateItems();
-  // $('#add-item').on("click", () => {
-  //   addItems();
-  //   populateItems();
-  // });
-  //
-  // $('#cart').on("click", () => {
-  //   togglePages();
-  // });
-  //
-  //
-  // $('#clear').on("click", () => {
-  //   items = [];
-  //   $("#items").empty();
-  //   populateItems();
-  //   localStorage.setItem('items', JSON.stringify("[]"));
-  // });
-  //
-  // function addItems() {
-  //   items.push({
-  //     item: $('#item').val(),
-  //     qty: $('#qty').val()
-  //   });
-  //   localStorage.setItem('items', JSON.stringify(items));
-  // }
-  //
-  // function populateItems() {
-  //   if (items.length === 0) {
-  //     $('#empty-info').show();
-  //     $('#info').hide();
-  //   } else {
-  //     $('#empty-info').hide();
-  //     $('#info').show();
-  //     $("#items").empty();
-  //     items.forEach(item => {
-  //       $('#items').append("<p class='text-dark stuff'><span class='text-primary'>" + item.qty + "</span>" + " " + item.item + "</p>");
-  //     });
-    // }
-  // }
-
-
 });
