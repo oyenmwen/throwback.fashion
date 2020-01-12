@@ -1,12 +1,24 @@
 <%= javascript_pack_tag 'cart' %>
 
 <h1>Your Cart</h1>
-<a class="btn btn-primary btn-lg" id="clear">delete all</a>
 <div class="container">
-  <h4 id="empty-info">Cart is empty!</h4>
+  <hr>
+  <h3 id="empty-info">Cart is empty!</h3>
   <div class="container" id="items">
-  
+
     </div>
-    <img src="../app/assets/images/ASAP.jpg" alt="" />
+    <hr>
+    <div class="container text-center">
+      <div class="row">
+        <div class="col">
+<h3 class="text-dark">Subtotal</h3><h4 class="text-dark font-weight-bold"id="subtotal"></h4>
+        </div>
+      </div>
+<div class="row">
+<div class="col">
+<%= link_to "Proceed to Shipping", checkout_shipping_path, class: "btn btn-lg btn-primary" %>
+</div>
+</div>
+    </div>
   </div>
 </div>

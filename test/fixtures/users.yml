@@ -6,6 +6,9 @@ one:
   phone_no: MyString
   email: MyString
   address: MyString
+  address_two: MyString
+  zip: MyString
+  state: MyString
   country: MyString
 
 two:
@@ -14,4 +17,7 @@ two:
   phone_no: MyString
   email: MyString
   address: MyString
+  address_two: MyString
+  zip: MyString
+  state: MyString
   country: MyString

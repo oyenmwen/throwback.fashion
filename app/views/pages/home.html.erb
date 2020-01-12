@@ -4,7 +4,7 @@
 <div class="row">
   <% @products.each do |product| %>
   <div class="col col-md-4 col-12">
-<%= link_to image_tag('https://assets.bigcartel.com/product_images/244444370/NAS-TEEEE.png?auto=format&fit=max&w=1200'), product %>
+<%= link_to image_tag("#{product.title}.png"), product %>
   <h5 class="text-dark"><%= product.title %></h5>
   <!-- <button class ="btn btn-md btn-primary">Add to Cart</button> -->
   <!-- <button class ="btn btn-md btn-outline-primary">Buy Now</button> -->

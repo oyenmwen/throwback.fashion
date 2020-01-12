@@ -15,11 +15,14 @@ class UsersTest < ApplicationSystemTestCase
     click_on "New User"
 
     fill_in "Address", with: @user.address
+    fill_in "Address two", with: @user.address_two
     fill_in "Country", with: @user.country
     fill_in "Email", with: @user.email
     fill_in "First name", with: @user.first_name
     fill_in "Last name", with: @user.last_name
     fill_in "Phone no", with: @user.phone_no
+    fill_in "State", with: @user.state
+    fill_in "Zip", with: @user.zip
     click_on "Create User"
 
     assert_text "User was successfully created"
@@ -31,11 +34,14 @@ class UsersTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     fill_in "Address", with: @user.address
+    fill_in "Address two", with: @user.address_two
     fill_in "Country", with: @user.country
     fill_in "Email", with: @user.email
     fill_in "First name", with: @user.first_name
     fill_in "Last name", with: @user.last_name
     fill_in "Phone no", with: @user.phone_no
+    fill_in "State", with: @user.state
+    fill_in "Zip", with: @user.zip
     click_on "Update User"
 
     assert_text "User was successfully updated"

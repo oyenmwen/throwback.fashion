@@ -54,13 +54,17 @@ location.reload();
     } else {
       $('#empty-info').hide();
       $("#items").empty();
+      $("#subtotal").empty();
+      let subtotal = 0;
       items.forEach(item => {
         const price = Number(item.price.substr(1)) * item.qty;
+        subtotal += price;
         $('#items').append(`
           <div class="row">
-          <div class="col col-md-4">
+          <div class="col col-md-2">
+          <img src="/assets/${item.title}.png"/>
           </div>
-          <div class="col col-md-4 title">
+          <div class="col col-md-2 title">
           ${item.title}
           </div>
           <div class="col col-md-1 size">
@@ -77,11 +81,13 @@ location.reload();
           </select>
           </div>
           <div class="col col-md-1 price">
-          ${price}
+          $${price}
           </div>
           </div>
           `);
       });
+      $('#subtotal').append(`$${subtotal.toFixed(2)} USD`);
+
     }
   }
 });
