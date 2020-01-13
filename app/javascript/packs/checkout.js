@@ -1,9 +1,6 @@
 // esversion: 9
 $(document).ready(function() {
   var items;
-//   const stripe = Stripe('pk_test_7RK8K3fvIjyWerMMqDUdzIpk003xhXuYX7');
-// const a = '<%=@CHECKOUT_SESSION_ID%>';
-// console.log(a);
   const stored = localStorage.getItem('items');
   if (stored) {
     items = JSON.parse(stored);
@@ -20,6 +17,7 @@ $(document).ready(function() {
       items.forEach(item => {
         qty += item.qty;
       });
+      $('#quantity').empty();
       $('#quantity').append(`${qty}`);
       items.forEach(item => {
         const price = Number(item.price.substr(1)) * item.qty;
@@ -58,24 +56,26 @@ $(document).ready(function() {
        items: items
      };
      $.ajax({
-       url:"/checkout/payment",
+       url:"/save",
        type: "POST",
        data: data,
-       dataType: "json",
-       success: ()=>{const stripe = Stripe('pk_test_7RK8K3fvIjyWerMMqDUdzIpk003xhXuYX7');
-     stripe.redirectToCheckout({
-       sessionId:CHECKOUT_SESSION_ID
-     }).then(function (result) {
-       console.log(result);
-     });
-   },
+       dataType: "data",
+       success: ()=>{
+         if(inputsFilled()){
+         window.location.replace("/checkout/purchase");
+            }
+          },
        error: ()=>{console.log("fail");}
      });
-
-
 });
 
-
+function inputsFilled(){
+  if($("#first_name").val()== null || $("#last_name").val()==null || $("#email").val()==null || $("#address").val()==null || $("#zip").val()==null ||
+   $("#state").val()==null || $("#country").val()==null){
+     return false;
+   }
+   return true;
+}
 
 
 

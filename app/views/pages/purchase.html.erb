@@ -1,0 +1,13 @@
+<script src="https://js.stripe.com/v3/"></script>
+
+<%= button_tag("Continue to payment", id:"submit", class:"btn btn-primary btn-lg btn-block") %>
+<script>
+  document.getElementById("submit").onclick = ()=>{
+    const stripe = Stripe('pk_test_7RK8K3fvIjyWerMMqDUdzIpk003xhXuYX7');
+  stripe.redirectToCheckout({
+    sessionId:'<%=@CHECKOUT_SESSION_ID%>'
+  }).then(function (result) {
+    console.log(result);
+  });
+};
+</script>

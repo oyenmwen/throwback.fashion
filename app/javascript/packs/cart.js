@@ -62,7 +62,7 @@ $(document).ready(function() {
         const price = Number(item.price.substr(1)) * item.qty;
         subtotal += price;
         let options = "";
-        for (i = 0; i < 8; i++) {
+        for (i = 0; i < 11; i++) {
           if (i == item.qty) {
             options += `<option selected="selected" value="${i}">${i}</option>`;
           } else {
@@ -91,6 +91,7 @@ $(document).ready(function() {
           </div>
           `);
       });
+      $('#subtotal').empty();
       $('#subtotal').append(`$${subtotal.toFixed(2)} USD`);
 
     }

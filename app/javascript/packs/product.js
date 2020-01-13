@@ -13,8 +13,10 @@ $(document).ready(function() {
     if (items.length > 0) {
       items.forEach(e => {
         if (e.title.trim() == $('#product-title').text().trim() && e.size.trim() == $('#size').val().trim()) {
+          if(e.qty<11){
           e.qty += 1;
           found = true;
+        }
         }
       });
     }

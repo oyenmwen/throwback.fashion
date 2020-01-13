@@ -1,8 +1,6 @@
-<script src="https://js.stripe.com/v3/"></script>
-<script>
-    var CHECKOUT_SESSION_ID = '<%=@CHECKOUT_SESSION_ID%>'
-</script>
-<%= javascript_pack_tag 'shipping' %>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+<%= javascript_pack_tag 'checkout' %>
 
   <div class="container">
   <div class="row">
@@ -20,7 +18,7 @@
         <div class="row">
           <div class="col-md-6 mb-3">
             <%= label_tag(:first_name) %>
-            <%= text_field :first_name,nil, id:"first_name", class:"form-control" %>
+            <%= text_field :first_name,nil, id:"first_name", class:"form-control",required: true %>
             <div class="invalid-feedback">
               Valid first name is required.
             </div>
@@ -86,6 +84,7 @@
 
         <hr class="mb-4">
         <%= button_tag("Continue to payment", id:"submit", class:"btn btn-primary btn-lg btn-block") %>
+
     </div>
   </div>
 
