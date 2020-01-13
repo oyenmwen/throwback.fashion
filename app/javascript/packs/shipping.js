@@ -1,6 +1,9 @@
 // esversion: 9
 $(document).ready(function() {
   var items;
+//   const stripe = Stripe('pk_test_7RK8K3fvIjyWerMMqDUdzIpk003xhXuYX7');
+// const a = '<%=@CHECKOUT_SESSION_ID%>';
+// console.log(a);
   const stored = localStorage.getItem('items');
   if (stored) {
     items = JSON.parse(stored);
@@ -49,51 +52,28 @@ $(document).ready(function() {
        zip : $("#zip").val(),
        state : $("#state").val(),
        country : $("#country").val()
-     }
-
+     };
      const data = {
        user: user,
        items: items
      };
-
      $.ajax({
        url:"/checkout/payment",
        type: "POST",
        data: data,
        dataType: "json",
-       success: function(){},
-       error: function(){}
+       success: ()=>{const stripe = Stripe('pk_test_7RK8K3fvIjyWerMMqDUdzIpk003xhXuYX7');
+     stripe.redirectToCheckout({
+       sessionId:CHECKOUT_SESSION_ID
+     }).then(function (result) {
+       console.log(result);
      });
-       // makeRequest("checkout/payment",user);
+   },
+       error: ()=>{console.log("fail");}
      });
 
-      // function makeRequest(url, user) {
-      //   httpRequest = new XMLHttpRequest();
-      //
-      //   if (!httpRequest) {
-      //     alert('Giving up :( Cannot create an XMLHTTP instance');
-      //     return false;
-      //   }
-      //
-      //   httpRequest.onreadystatechange = alertContents;
-      //   httpRequest.open('POST', url);
-      //   httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      //   httpRequest.send('user=' + encodeURIComponent(user), 'items=' + encodeURIComponent(items));
-      // }
-      //
-      // function alertContents() {
-      //   if (httpRequest.readyState === XMLHttpRequest.DONE) {
-      //     if (httpRequest.status === 200) {
-      //       alert(httpRequest.responseText);
-      //     } else {
-      //       alert('There was a problem with the request.');
-      //     }
-      //   }
-      // }
 
-
-
-
+});
 
 
 

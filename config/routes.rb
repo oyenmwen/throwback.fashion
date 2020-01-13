@@ -9,7 +9,7 @@ root'pages#home'
 get 'contact', to: 'pages#contact'
 get 'cart', to: 'pages#cart'
 # get 'products/:id/buy', to: 'products#buy'
-post 'checkout/payment', to: 'pages#buy'
+post 'checkout/payment', to: 'pages#purchase'
 get 'cart', to: 'pages#cart'
 get 'checkout/shipping', to: 'pages#shipping'
 

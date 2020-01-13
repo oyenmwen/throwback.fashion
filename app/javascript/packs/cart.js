@@ -27,7 +27,7 @@ $(document).ready(function() {
       deleteItems();
     }
     localStorage.setItem('items', JSON.stringify(items));
-location.reload();
+    location.reload();
 
   });
 
@@ -51,14 +51,24 @@ location.reload();
   function populateItems() {
     if (items.length === 0) {
       $('#empty-info').show();
+      $('#sub-info').hide();
+
     } else {
       $('#empty-info').hide();
       $("#items").empty();
-      $("#subtotal").empty();
+      $("#sub-info").show();
       let subtotal = 0;
       items.forEach(item => {
         const price = Number(item.price.substr(1)) * item.qty;
         subtotal += price;
+        let options = "";
+        for (i = 0; i < 8; i++) {
+          if (i == item.qty) {
+            options += `<option selected="selected" value="${i}">${i}</option>`;
+          } else {
+            options += `<option value="${i}">${i}</option>`;
+          }
+        }
         $('#items').append(`
           <div class="row">
           <div class="col col-md-2">
@@ -72,12 +82,7 @@ location.reload();
           </div>
           <div class="col col-md-1">
           <select class="qty" name="qty">
-          <option value="0">0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+          ${options}
           </select>
           </div>
           <div class="col col-md-1 price">
