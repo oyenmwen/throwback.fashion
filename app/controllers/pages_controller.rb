@@ -29,8 +29,7 @@ def order_success
   end
   @items = @@items
   @mail_html="<html><body>
-  <img src='https://i.imgur.com/dGon5FJ.png' width='650' height='65'>
-  <hr>
+  <img src='https://i.imgur.com/LwHttnp.png' width='250' height='100'>
   <h1>Thank you for your order #{@@first_name}!</h1>
   <h3>Your order details:</h3>
   <h4>Order number <strong>#{@ord_id}</strong></h4>

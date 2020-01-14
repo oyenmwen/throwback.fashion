@@ -36,7 +36,7 @@ $(document).ready(function() {
         subtotal += price;
         $('#items').append(`
           <li class="list-group-item d-flex justify-content-between checkout lh-condensed">
-          <img  src=${item.img}>
+          <img src=${item.img}>
             <div class="mx-md-3">
               <h5 class="my-0">${item.title}</h5>
               <small class="text-muted">Size: ${item.size} | Quantity: ${item.qty} </small>
@@ -51,31 +51,4 @@ $(document).ready(function() {
         <strong>$${subtotal.toFixed(2)}</strong>
       </li>`);
     }
-//     $("#submit").click(()=>{
-//       const user = {
-//        first_name : $("#first_name").val(),
-//        last_name : $("#last_name").val(),
-//        email : $("#email").val(),
-//        address : $("#address").val(),
-//        address_two : $("#address_two").val(),
-//        zip : $("#zip").val(),
-//        state : $("#state").val(),
-//        country : $("#country").val()
-//      };
-//      const data = {
-//        user: user,
-//        items: items
-//      };
-//      $.ajax({
-//        url:"/save",
-//        type: "POST",
-//        data: data,
-//        dataType: "data",
-//        success: ()=>{
-//          window.location.replace("/checkout/purchase");
-//           },
-//        error: ()=>{console.log("fail");}
-//      });
-// });
-//
 });
