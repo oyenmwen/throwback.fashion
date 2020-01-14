@@ -23,45 +23,40 @@ def order_success
   @user.state = @@state
   @user.zip = @@zip
   @user.save
-  @order = Order.new
   @ord_id= SecureRandom.hex(8)
   while Order.find_by(ord_id: @ord_id) != nil
     @ord_id= SecureRandom.hex(8)
   end
   @items = @@items
-  mail_html=`
-  <img src="https://i.imgur.com/dGon5FJ.png" width="60" height="auto">
-  <hr><br>
-  <h1>Thank you for your order #{@@first_name}!</h1><br>
-  <h3>Your order id is <strong>#{@ord_id}</strong>!</h3><br>
-  <h4>Please be on the lookout for updates in regards to the order tracking number</h4><br>
-  <h5>Your order details</h5><br>
-  <p>#{@@first_name} #{@@last_name}</p><br>
-  <p>#{@@address} #{@@address_two},#{@@zip} #{@@state} #{@@country} </p><br><hr>
-  `
+  @mail_html="<html><body>
+  <img src='https://i.imgur.com/dGon5FJ.png' width='650' height='65'>
+  <hr>
+  <h1>Thank you for your order #{@@first_name}!</h1>
+  <h3>Your order details:</h3>
+  <h4>Order number <strong>#{@ord_id}</strong></h4>
+  <p>#{@@first_name} #{@@last_name}</p>
+  <p>#{@@address} #{@@address_two}</p>
+  <p>#{@@zip} #{@@state} #{@@country} </p><hr>
+  "
   @items.each do |k,e|
+    @order = Order.new
     @order.user = @user
     @order.product = Product.find_by(title: e[:title])
     @order.size = Size.find_by(size: e[:size])
     @order.qty = e[:qty]
     @order.ord_id = @ord_id
     @order.save
-    mail_html+=`<img src = "#{e[:img]}" width="30" height="auto"><p> #{e[:title]}, Size: #{e[:size]}, Quantity: #{e[:qty]}</p><br><hr>`
+    @mail_html+="<p><img src = '#{e[:img]}'width='120' height='140'> #{e[:title]}, Size: #{e[:size]}, Quantity: #{e[:qty]}</p><hr>"
   end
 
-mail_html +=`<h6><strong>If you have any further questions please email us at contact@throwback.vintage! :)</strong></h6>`
-  # from = Email.new(email: 'test@example.com')
-  # to = Email.new(email: @user.email)
-  # subject = "Thank You!! Order #{@ord_id}"
-  # content = Content.new(type: 'text/plain', value: "your order number is: #{@ord_id}")
-  # mail = Mail.new(from, subject, to, content)
-
-  from = Email.new(email: 'test@example.com')
-to = Email.new(email: @user.email)
-subject = 'Sending with SendGrid is Fun'
-content = Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby')
-mail = Mail.new(from, subject, to, content)
-
+@mail_html +="
+<h4>Expect a tracking number in 1-3 days</h4>
+<h4><strong>If you have any further questions please email us at contact@throwback.vintage! :)</strong></h4></body></html>"
+  from = Email.new(email: 'noreply@throwback.fashion')
+  to = Email.new(email: @@email)
+  subject = "Thank You!! Order #{@ord_id}"
+  content = Content.new(type: 'text/html', value: @mail_html)
+  mail = Mail.new(from, subject, to, content)
 
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._('send').post(request_body: mail.to_json)
