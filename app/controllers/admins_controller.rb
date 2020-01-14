@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
 
 def create
-  if current_admin
+  # if current_admin
     admin = Admin.new(
       name:params[:name],
       email:params[:email],
@@ -18,20 +18,20 @@ def create
       redirect_to '/admin/signup'
     end
 
-  else
-    flash[:warning] = "You must be logged in to see this page"
-    redirect_to '/admin/login'
-  end
+  # else
+  #   flash[:warning] = "You must be logged in to see this page"
+  #   redirect_to '/admin/login'
+  # end
 
 end
 
-def new
-  if current_admin
-    render 'new.html.erb'
-  else
-    flash[:warning] = "You must be logged in to see this page"
-    redirect_to '/admin/login'
-  end
-end
+# def new
+#   if current_admin
+#     render 'new.html.erb'
+#   else
+#     flash[:warning] = "You must be logged in to see this page"
+#     redirect_to '/admin/login'
+#   end
+# end
 
 end
