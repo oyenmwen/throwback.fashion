@@ -50,11 +50,18 @@ def order_success
   end
 
 mail_html +=`<h6><strong>If you have any further questions please email us at contact@throwback.vintage! :)</strong></h6>`
+  # from = Email.new(email: 'test@example.com')
+  # to = Email.new(email: @user.email)
+  # subject = "Thank You!! Order #{@ord_id}"
+  # content = Content.new(type: 'text/plain', value: "your order number is: #{@ord_id}")
+  # mail = Mail.new(from, subject, to, content)
+
   from = Email.new(email: 'test@example.com')
-  to = Email.new(email: @user.email)
-  subject = "Thank You!! Order #{@ord_id}"
-  content = Content.new(type: 'text/plain', value: "your order number is: #{@ord_id}")
-  mail = Mail.new(from, subject, to, content)
+to = Email.new(email: @user.email)
+subject = 'Sending with SendGrid is Fun'
+content = Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby')
+mail = Mail.new(from, subject, to, content)
+
 
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
   response = sg.client.mail._('send').post(request_body: mail.to_json)

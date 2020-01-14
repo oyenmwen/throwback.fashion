@@ -10,13 +10,13 @@ def create
   redirect_to '/contact'
  else
   flash[:warning] = "Invalid Username or Password"
-  redirect_to '/login'
+  redirect_to '/admin/login'
  end
 end
 
  def destroy
   session[:admin_id] = nil
   flash[:success] = "Successfully Logged Out!"
-  redirect_to '/login'
+  redirect_to '/admin/login'
  end
 end

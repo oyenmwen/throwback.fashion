@@ -18,18 +18,132 @@ canvas{
 
   position: fixed;
   left: 14%;
-  top:11%;
+  top:8%;
 }
 #logo{
   position: fixed;
-  top:10%;
+  top:7%;
   left: 6%;
   width: 7%;
   height: auto;
 }
 
 .main{
-  position: fixed;
+
+  position: relative;
+  top:12em;
+  left: 4%;
+}
+
+.desktop-gone{
+  display: none;
+}
+
+.side-nav{
+  top:24%;
+  left: 6%;
+  width: 10%;
+
+
+}
+.cart-nav{
+  display: inline-block;
   top:10%;
-  left: 28%;
+  left:76%;
+
+}
+.copyright{
+  margin-top: 130%;
+}
+
+
+/*Side nav CSS */
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  margin: 10% 5%;
+  text-decoration: none;
+  font-family: 'Source Code Pro', monospace;
+
+  font-size: 25px;
+  color: lightgrey !important;
+  display: block;
+  transition: 0.3s;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1350px) {
+  .main{
+    left: 15%;
+  }
+  img{
+    width:70%;
+  }
+  .col{
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  .logo{
+    position: fixed;
+    top:5%;
+    left: 80%;
+    width: 8%;
+    height: auto;
+  }
+
+  #logo{
+    width: 15%;
+    left:9%;
+    top:6%;
+  }
+  canvas{
+    top:2.5%;
+    left:40%;
+    width: 10px;
+  }
+html,body{
+  overflow-x: hidden;
+}
+.mobile-gone{
+  display: none;
+}
+.desktop-gone{
+  display: block;
+}
 }

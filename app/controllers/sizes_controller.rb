@@ -9,7 +9,7 @@ class SizesController < ApplicationController
       render 'index.html.erb'
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
   end
 
@@ -20,7 +20,7 @@ class SizesController < ApplicationController
       render 'show.html.erb'
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
   end
 
@@ -31,7 +31,7 @@ class SizesController < ApplicationController
       render 'new.html.erb'
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
   end
 
@@ -41,7 +41,7 @@ class SizesController < ApplicationController
       render 'edit.html.erb'
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
   end
 
@@ -62,7 +62,7 @@ class SizesController < ApplicationController
       end
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
 
   end
@@ -82,7 +82,7 @@ class SizesController < ApplicationController
       end
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
 
   end
@@ -98,7 +98,7 @@ class SizesController < ApplicationController
       end
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
 
   end
@@ -110,7 +110,7 @@ class SizesController < ApplicationController
         @size = Size.find(params[:id])
       else
         flash[:warning] = "You must be logged in to see this page"
-        redirect_to '/login'
+        redirect_to '/admin/login'
       end
     end
 

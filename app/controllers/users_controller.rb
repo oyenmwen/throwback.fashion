@@ -9,7 +9,7 @@ class UsersController < ApplicationController
       render 'index.html.erb'
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
   end
 
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       render 'show.html.erb'
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
   end
 
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
       render 'new.html.erb'
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
 
   end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
       render 'edit.html.erb'
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
   end
 
@@ -88,7 +88,7 @@ class UsersController < ApplicationController
       end
     else
       flash[:warning] = "You must be logged in to see this page"
-      redirect_to '/login'
+      redirect_to '/admin/login'
     end
   end
 
@@ -99,7 +99,7 @@ class UsersController < ApplicationController
         @user = User.find(params[:id])
       else
         flash[:warning] = "You must be logged in to see this page"
-        redirect_to '/login'
+        redirect_to '/admin/login'
       end
     end
 

@@ -1,8 +1,10 @@
-<nav class="navbar navbar-expand-lg text-center">
+<%= javascript_pack_tag 'pyramid' %>
+
+<!-- <nav class="navbar navbar-expand-lg text-center desktop-gone">
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+    <span class="navbar-toggler-icon" style="color:black"></span>
   </button>
-  <div class="collapse navbar-collapse text-center" id="navbarNav">
+  <div class="collapse navbar-collapse text-center"  id="navbarNav">
     <ul class="navbar-nav text-center">
 
       <li class="nav-item">
@@ -16,4 +18,44 @@
       </li>
     </ul>
   </div>
-</nav>
+</nav> -->
+<%=link_to image_tag("tf.png", class:"my-md-4 mb-md-5", id:"logo" ),"/"%>
+<div class="py-2 fixed-top side-nav mobile-gone">
+                <div class="nav flex-wrap flex-sm-column">
+                    <a href="/" class="nav-link d-none d-sm-inline">Home</a>
+                    <a href="/" class="nav-link">Products</a>
+                    <!-- <a href="" class="nav-link">About</a> -->
+                    <a href="/contact" class="nav-link">Contact</a>
+                    <a  class=" mt-md-5 nav-link ">Free Shipping</a>
+                    <a href="https://www.instagram.com/izdwco/" target="_blank" class=" mb-md-5 pb-md-5 nav-link">Instagram</a>
+                    <a  class="copyright nav-link ">© <em class="text-sm">TF 2020</em></a>
+                </div>
+        </div>
+
+        <div class="py-2 fixed-top cart-nav mobile-gone">
+                        <div class="nav flex-sm-column">
+                            <a href="/cart" class="nav-link d-none d-sm-inline">Shopping Cart (<strong class="cart-number"></strong>)</a>
+                        </div>
+                </div>
+
+                <script type="text/javascript">
+                  function openNav() {
+                  document.getElementById("mySidenav").style.width = "250px";
+                }
+
+                /* Set the width of the side navigation to 0 */
+                function closeNav() {
+                  document.getElementById("mySidenav").style.width = "0";
+                }
+                </script>
+<!-- SIDE NAV HTML -->
+<div id="mySidenav" class="sidenav">
+<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="/cart">Cart (<strong class="cart-number"></strong>)</a>
+  <a href="/">Home</a>
+  <a href="/">Products</a>
+  <!-- <a href="/">About</a> -->
+  <a href="/contact">Contact</a>
+</div>
+  <img src= "/assets/bars-solid.svg" class="iconify desktop-gone logo" data-icon="octicon:three-bars" data-inline="false" onclick="openNav()" id="openbtn">
+<!-- Use any element to open the sidenav -->

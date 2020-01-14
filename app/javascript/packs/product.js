@@ -31,7 +31,7 @@ $(document).ready(function() {
     localStorage.setItem('items', JSON.stringify(items));
   }
 
-  $('#add-item').on("click", () => {
+  $('.add-item').on("click", () => {
     addItems();
   });
 

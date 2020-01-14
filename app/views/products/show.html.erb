@@ -1,32 +1,31 @@
+<%= javascript_pack_tag 'pyramid' %>
+
 <%= javascript_pack_tag 'product' %>
 
 <p id="notice"><%= notice %></p>
 
-<div class ="container">
+<div class ="container show">
   <div class="row">
 <div class="col col-md-8 col-12">
   <img id="product-image" src=<%=@product.product_img%> alt="<%=@product.title%>"/>
 </div>
-<div class="col col-md-4 col-12">
-  <h3 class="font-weight-bold" id="product-title"><%=@product.title%></h3>
+<div class="col col-md-4 col-12 mt-md-5 pt-4">
+  <h3 class="font-weight-bold my-md-4" id="product-title"><%=@product.title%></h3>
 
-  <p>
+  <h4 class="font-weight-bolder my-3" style="font-weight:800" id="product-price">$<%=@product.price%></h4>
+  <p id="product-description" class="py-3">
     <%= @product.description %>
   </p>
-
-  <h3 class="font-weight-bold" id="product-price">$<%=@product.price%></h3>
-  <form action="/buy" method="post">
-    <input type="hidden" name="product[title]" value="<%= @product.title %>">
-    <input type="hidden" name="product[price]" value="<%= @product.price %>">
+  <label for="size">Select a size:
     <select id="size" name="size">
-      <% @sizes.each do |size|  %>
-      <option value="<%= size.size %>"><%= size.size %></option>
-      <% end %>
-    </select><br>
-    <a href="/cart" id="add-item" class="btn btn-lg btn-primary">Buy Now</a><br>
-    <a  href="/checkout/payment" class="btn btn-lg btn-secondary">Add to Cart</a>
-
-  </form>
+    <% @sizes.each do |size|  %>
+    <option value="<%= size.size %>"><%= size.size %></option>
+    <% end %>
+  </select>
+</label>
+<br>
+    <a href="/cart" class="add-item mt-4 btn-block btn btn-lg btn-primary">Buy Now</a>
+    <a  href=""  class=" add-item btn btn-lg btn-block btn-secondary">Add to Cart</a>
 
 </div>
   </div>

@@ -15,14 +15,23 @@ def create
       redirect_to '/contact'
     else
       flash[:warning] = "Invalid Email or Password"
-      redirect_to '/signup'
+      redirect_to '/admin/signup'
     end
-    
+
   else
     flash[:warning] = "You must be logged in to see this page"
-    redirect_to '/login'
+    redirect_to '/admin/login'
   end
 
+end
+
+def new
+  if current_admin
+    render 'new.html.erb'
+  else
+    flash[:warning] = "You must be logged in to see this page"
+    redirect_to '/admin/login'
+  end
 end
 
 end
