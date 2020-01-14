@@ -31,13 +31,6 @@ $(document).ready(function() {
 
   });
 
-  // $('#clear').on("click", () => {
-  //   items = [];
-  //   $("#items").empty();
-  //   populateItems();
-  //   localStorage.setItem('items', JSON.stringify(items));
-  // });
-
   function deleteItems() {
     let temp = [];
     items.forEach(e => {
@@ -70,29 +63,31 @@ $(document).ready(function() {
           }
         }
         $('#items').append(`
-          <div class="row">
-          <div class="col col-md-2">
+          <hr>
+          <div class="row text-center">
+          <div class="col col-md-2 col-12">
           <img src="/assets/${item.title}.png"/>
           </div>
-          <div class="col col-md-2 title">
+          <div class="col col-md-2 mt-md-5 col-12 title">
           ${item.title}
           </div>
-          <div class="col col-md-1 size">
+          <div class="col col-md-1 mt-md-5 col-12 size">
           ${item.size}
           </div>
-          <div class="col col-md-1">
+          <div class="col col-md-1 ml-2 mt-md-5 col-12">
           <select class="qty" name="qty">
           ${options}
           </select>
           </div>
-          <div class="col col-md-1 price">
+          <div class="col col-md-1 mt-md-5 price col-12">
           $${price.toFixed(2)}
           </div>
           </div>
           `);
       });
-      $('#subtotal').empty();
-      $('#subtotal').append(`$${subtotal.toFixed(2)} USD`);
+      $('#items').append(`<hr>`);
+      $('.subtotal, #subtotal').empty();
+      $('#subtotal , .subtotal').append(`$${subtotal.toFixed(2)}`);
 
     }
   }

@@ -1,0 +1,34 @@
+<%= javascript_pack_tag 'product' %>
+
+<p id="notice"><%= notice %></p>
+
+<div class ="container">
+  <div class="row">
+<div class="col col-md-8 col-12">
+<%=image_tag("#{@product.title}.png")%>
+</div>
+<div class="col col-md-4 col-12">
+  <h3 class="font-weight-bold" id="product-title"><%=@product.title%></h3>
+
+  <p>
+    <%= @product.description %>
+  </p>
+
+  <h3 class="font-weight-bold" id="product-price">$<%=@product.price%></h3>
+  <form action="/buy" method="post">
+    <input type="hidden" name="product[title]" value="<%= @product.title %>">
+    <input type="hidden" name="product[price]" value="<%= @product.price %>">
+    <select id="size" name="size">
+      <% @sizes.each do |size|  %>
+      <option value="<%= size.size %>"><%= size.size %></option>
+      <% end %>
+    </select><br>
+    <a href="/cart" id="add-item" class="btn btn-lg btn-primary">Buy Now</a><br>
+    <a  href="/checkout/payment" class="btn btn-lg btn-secondary">Add to Cart</a>
+
+  </form>
+
+</div>
+  </div>
+
+  </div>

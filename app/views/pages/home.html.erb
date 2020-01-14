@@ -1,13 +1,12 @@
 
 <div class="container text-center">
-<h1 class="my-5 py-5">THROWBACK FASHION</h1>
+<hr class="py-3 mt-5 mt-md-4" />
 <div class="row">
   <% @products.each do |product| %>
-  <div class="col col-md-4 col-12">
+  <div class="col col-md-4 mb-4 mb-md-0 col-12">
 <%= link_to image_tag("#{product.title}.png"), product %>
-  <h5 class="text-dark"><%= product.title %></h5>
-  <!-- <button class ="btn btn-md btn-primary">Add to Cart</button> -->
-  <!-- <button class ="btn btn-md btn-outline-primary">Buy Now</button> -->
+  <h5 class="text-dark "><%= product.title %></h5>
+
   </div>
   <% end %>
 </div>

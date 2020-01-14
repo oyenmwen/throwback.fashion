@@ -1,0 +1,36 @@
+.btn{
+  color:white !important;
+}
+a:hover{
+  color:black !important;
+}
+.h5{
+  font-size: 3em;
+  font-weight: 900;
+}
+
+@media only screen and (max-width: 600px) {
+  #logo{
+    width:110%;
+    height: auto;
+  }
+
+  img{
+    width: 95%;
+  }
+
+  .mobile-gone{
+    display: none;
+  }
+
+  #sub-info {
+    background-color: white;
+    border-style: solid;
+  border-width: thin;
+    position: fixed;
+    text-align: center;
+  left: 0;
+    bottom: 0;
+    width: 100%;
+}
+}

@@ -1,2 +1,11 @@
-<h1>Thanks for your order!</h1>
-<p><strong>Your order id is <%=@ord_id%></strong></p>
+<%= javascript_pack_tag 'order_success' %>
+
+<div class="container my-5 py-5">
+  <h1>Thanks for your order!</h1><br><br>
+  <img src="/assets/order-success.jpg" style="width:50%;" alt=""><br><br><br>
+
+  <h4>Your order number is <strong><%=@ord_id%></strong></h4><br>
+  <p>Check your email for further order details</p>
+  <p>Expect an update e-mail with your tracking number within 1 or 3 days</p>
+
+  </div>

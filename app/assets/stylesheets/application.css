@@ -14,3 +14,22 @@
  *= require_tree .
  *= require_self
  */
+canvas{
+
+  position: fixed;
+  left: 14%;
+  top:11%;
+}
+#logo{
+  position: fixed;
+  top:10%;
+  left: 6%;
+  width: 7%;
+  height: auto;
+}
+
+.main{
+  position: fixed;
+  top:10%;
+  left: 28%;
+}

@@ -23,9 +23,10 @@ $(document).ready(function() {
         const price = Number(item.price.substr(1)) * item.qty;
         subtotal += price;
         $('#items').append(`
-          <li class="list-group-item d-flex justify-content-between lh-condensed">
-            <div>
-              <h6 class="my-0">${item.title}</h6>
+          <li class="list-group-item d-flex justify-content-between checkout lh-condensed">
+          <img  src=${item.img}>
+            <div class="mx-md-3">
+              <h5 class="my-0">${item.title}</h5>
               <small class="text-muted">Size: ${item.size} | Quantity: ${item.qty} </small>
             </div>
             <span class="text-muted">${price.toFixed(2)}</span>
@@ -38,8 +39,6 @@ $(document).ready(function() {
         <strong>$${subtotal.toFixed(2)}</strong>
       </li>`);
     }
-
-    // var httpRequest;
     $("#submit").click(()=>{
       const user = {
        first_name : $("#first_name").val(),
@@ -51,6 +50,9 @@ $(document).ready(function() {
        state : $("#state").val(),
        country : $("#country").val()
      };
+
+     localStorage.setItem('user', JSON.stringify(user));
+
      const data = {
        user: user,
        items: items
@@ -61,27 +63,10 @@ $(document).ready(function() {
        data: data,
        dataType: "data",
        success: ()=>{
-         if(inputsFilled()){
          window.location.replace("/checkout/purchase");
-            }
           },
        error: ()=>{console.log("fail");}
      });
 });
-
-function inputsFilled(){
-  if($("#first_name").val()== null || $("#last_name").val()==null || $("#email").val()==null || $("#address").val()==null || $("#zip").val()==null ||
-   $("#state").val()==null || $("#country").val()==null){
-     return false;
-   }
-   return true;
-}
-
-
-
-
-
-
-
 
 });

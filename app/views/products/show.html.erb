@@ -5,7 +5,7 @@
 <div class ="container">
   <div class="row">
 <div class="col col-md-8 col-12">
-<%=image_tag("#{@product.title}.png")%>
+  <img id="product-image" src=<%=@product.product_img%> alt="<%=@product.title%>"/>
 </div>
 <div class="col col-md-4 col-12">
   <h3 class="font-weight-bold" id="product-title"><%=@product.title%></h3>

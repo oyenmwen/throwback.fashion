@@ -4,26 +4,52 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    if current_admin
+      @users = User.all
+      render 'index.html.erb'
+    else
+      flash[:warning] = "You must be logged in to see this page"
+      redirect_to '/login'
+    end
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    if current_admin
+      render 'show.html.erb'
+    else
+      flash[:warning] = "You must be logged in to see this page"
+      redirect_to '/login'
+    end
   end
 
   # GET /users/new
   def new
-    @user = User.new
+    if current_admin
+      @user = User.new
+      render 'new.html.erb'
+    else
+      flash[:warning] = "You must be logged in to see this page"
+      redirect_to '/login'
+    end
+
   end
 
   # GET /users/1/edit
   def edit
+    if current_admin
+      render 'edit.html.erb'
+    else
+      flash[:warning] = "You must be logged in to see this page"
+      redirect_to '/login'
+    end
   end
 
   # POST /users
   # POST /users.json
   def create
+
     @user = User.new(user_params)
 
     respond_to do |format|
@@ -54,17 +80,27 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_admin
+      @user.destroy
+      respond_to do |format|
+        format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      flash[:warning] = "You must be logged in to see this page"
+      redirect_to '/login'
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find(params[:id])
+      if current_admin
+        @user = User.find(params[:id])
+      else
+        flash[:warning] = "You must be logged in to see this page"
+        redirect_to '/login'
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

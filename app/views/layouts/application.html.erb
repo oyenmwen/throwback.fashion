@@ -1,21 +1,97 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>ThrowbackFashion</title>
+    <title>Throwback Fashion Vintage Clothing</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+    <link rel="manifest" href="assets/site.webmanifest">
+    <link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,800|Roboto|Coda|Source+Code+Pro&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="navbar-fixed-right.min.css">
+    <link rel="stylesheet" href="navbar-fixed-left.min.css">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src = "https://threejs.org/build/three.js"></script>
+
   </head>
 
   <body>
-  <div class ="container">
 
-    <%= render 'layouts/navigation' %>
-    <%= render 'layouts/messages' %>
-    <%= yield %>
-  </div>
+      <%= image_tag("tf.png", class:"my-md-4 mb-md-5", id:"logo" )%>
+
+      <script>
+        let newLocal = new THREE.Scene();
+        let scene = newLocal;
+
+        let camera = new THREE.OrthographicCamera();
+
+        let renderer = new THREE.WebGLRenderer({
+          alpha: true
+        });
+        renderer.setClearColor(0x000000, 0); // the default
+        renderer.setSize(100, 100);
+        document.body.appendChild(renderer.domElement);
+
+        let geometry = new THREE.ConeGeometry(1.35, 2, 4);
+        let material = new THREE.MeshBasicMaterial({
+          color: 0x00000000,
+          wireframe: true
+        });
+        let cone = new THREE.Mesh(geometry, material);
+        scene.add(cone);
+
+        let geometry1 = new THREE.SphereGeometry(0.2, 7, 4);
+        let material1 = new THREE.MeshBasicMaterial({
+          color: 0x00000000,
+          wireframe: true
+        });
+        let sphere = new THREE.Mesh(geometry1, material1);
+        scene.add(sphere);
+
+        sphere.translateY(-0.7);
+
+
+        cone.scale.x = 0.6; // SCALE
+        cone.scale.y = 0.6; // SCALE
+        cone.scale.z = 0.6; // SCALE
+        sphere.scale.x = 0.5; // SCALE
+        sphere.scale.y = 0.5; // SCALE
+        sphere.scale.z = 0.5; // SCALE
+
+        sphere.translateY(0.5);
+        cone.translateY(0);
+        sphere.translateX(-0.15);
+        cone.translateX(-0.15);
+        camera.position.z = 5;
+
+        const animate = function() {
+          requestAnimationFrame(animate);
+
+
+          cone.rotation.y += 0.008;
+          sphere.rotation.y += 0.008;
+          sphere.rotation.x += 0.008;
+
+          renderer.render(scene, camera);
+        };
+
+        animate();
+
+      </script>
+      <!-- </div> -->
+
+    <div class="container main">
+
+      <%= render 'layouts/navigation' %>
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
 
   </body>
 </html>

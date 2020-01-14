@@ -4,13 +4,9 @@ class PagesController < ApplicationController
   require 'sendgrid-ruby'
   include SendGrid
 
-
 def home
   @products = Product.all
 end
-
-# def products
-# end
 
 def contact
 end
@@ -33,7 +29,16 @@ def order_success
     @ord_id= SecureRandom.hex(8)
   end
   @items = @@items
-
+  mail_html=`
+  <img src="https://i.imgur.com/dGon5FJ.png" width="60" height="auto">
+  <hr><br>
+  <h1>Thank you for your order #{@@first_name}!</h1><br>
+  <h3>Your order id is <strong>#{@ord_id}</strong>!</h3><br>
+  <h4>Please be on the lookout for updates in regards to the order tracking number</h4><br>
+  <h5>Your order details</h5><br>
+  <p>#{@@first_name} #{@@last_name}</p><br>
+  <p>#{@@address} #{@@address_two},#{@@zip} #{@@state} #{@@country} </p><br><hr>
+  `
   @items.each do |k,e|
     @order.user = @user
     @order.product = Product.find_by(title: e[:title])
@@ -41,11 +46,14 @@ def order_success
     @order.qty = e[:qty]
     @order.ord_id = @ord_id
     @order.save
+    mail_html+=`<img src = "#{e[:img]}" width="30" height="auto"><p> #{e[:title]}, Size: #{e[:size]}, Quantity: #{e[:qty]}</p><br><hr>`
   end
+
+mail_html +=`<h6><strong>If you have any further questions please email us at contact@throwback.vintage! :)</strong></h6>`
   from = Email.new(email: 'test@example.com')
   to = Email.new(email: @user.email)
-  subject = 'Sending with SendGrid is Fun'
-  content = Content.new(type: 'text/plain', value: 'and easy to do anywhere, even with Ruby')
+  subject = "Thank You!! Order #{@ord_id}"
+  content = Content.new(type: 'text/plain', value: "your order number is: #{@ord_id}")
   mail = Mail.new(from, subject, to, content)
 
   sg = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
@@ -61,35 +69,28 @@ end
 # end
 
 def cart
-
 end
 
 def purchase
-
   @line = []
   @@items.each do |k,e|
     @line.push({
       name: e[:title],
       description: e[:size],
+      images: ["#{e[:img]}"],
       amount: 2999,
       currency: 'usd',
       quantity: e[:qty],
       })
-    # @order.product = Product.find_by(title: e[:title])
-    # @order.size = Size.find_by(size: e[:size])
-    # @order.qty = e[:qty]
-    # @order.ord_id = @ord_id
-    # @order.save
     end
     Stripe.api_key = 'sk_test_6NR3y3WIvKHHf0gcN3mgBIso00UJuvS671'
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: @line,
-      success_url: root_url+"order/success",
-      cancel_url: "https://youtube.com",
+      success_url: root_url + "order/success",
+      cancel_url: root_url + "checkout",
     )
     @CHECKOUT_SESSION_ID = session.id
-
 
 end
 
