@@ -85,7 +85,7 @@
 
       <script>
         document.getElementById("submit").onclick = () => {
-          const stripe = Stripe('pk_test_7RK8K3fvIjyWerMMqDUdzIpk003xhXuYX7');
+          const stripe = Stripe('<%=@STRIPE_PK_API%>');
           stripe.redirectToCheckout({sessionId: '<%=@CHECKOUT_SESSION_ID%>'}).then(function (result) {
             console.log(result);
           });

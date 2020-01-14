@@ -84,13 +84,14 @@ def purchase
       quantity: e[:qty],
       })
     end
-    Stripe.api_key = 'sk_test_6NR3y3WIvKHHf0gcN3mgBIso00UJuvS671'
+    Stripe.api_key = ENV['STRIPE_SK_KEY']
     session = Stripe::Checkout::Session.create(
       payment_method_types: ['card'],
       line_items: @line,
       success_url: root_url + "order/success",
       cancel_url: root_url + "checkout",
     )
+    @STRIPE_PK_API = ENV['STRIPE_PK_KEY']
     @CHECKOUT_SESSION_ID = session.id
 
 end
