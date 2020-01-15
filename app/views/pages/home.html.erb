@@ -4,7 +4,7 @@
 <div class="row">
   <% @products.each do |product| %>
   <div class="col col-md-4 mb-4 mb-md-0 col-12">
-<%= link_to image_tag("/#{product.product_img}", alt: "#{product.title}"), product %>
+<%= link_to image_tag("#{product.product_img}", alt: "#{product.title}"), product %>
   <h5 class="text-dark "><%= product.title %></h5>
 
   </div>
