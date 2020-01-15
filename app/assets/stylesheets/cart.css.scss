@@ -16,6 +16,10 @@ a:hover{
 }
 
 @media only screen and (max-width: 600px) {
+  html,body{
+    padding-bottom: 35%;
+  }
+
   #logo{
     width:110%;
     height: auto;
