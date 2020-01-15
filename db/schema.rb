@@ -20,18 +20,6 @@ ActiveRecord::Schema.define(version: 2020_01_13_210642) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.integer "product_id", null: false
-    t.integer "size_id", null: false
-    t.integer "user_id", null: false
-    t.integer "qty"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "ord_id"
-    t.index ["product_id"], name: "index_orders_on_product_id"
-    t.index ["size_id"], name: "index_orders_on_size_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
-  end
 
   create_table "products", force: :cascade do |t|
     t.string "title"
@@ -60,6 +48,19 @@ ActiveRecord::Schema.define(version: 2020_01_13_210642) do
     t.string "country"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer "product_id", null: false
+    t.integer "size_id", null: false
+    t.integer "user_id", null: false
+    t.integer "qty"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "ord_id"
+    t.index ["product_id"], name: "index_orders_on_product_id"
+    t.index ["size_id"], name: "index_orders_on_size_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   add_foreign_key "orders", "products"
