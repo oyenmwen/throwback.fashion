@@ -8,6 +8,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_admin
 
   def authenticate_admin!
-  redirect_to '/admin/login' unless current_admin
+  raise ActionController::RoutingError.new('Not Found') unless current_admin
   end
 end

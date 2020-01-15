@@ -10,13 +10,13 @@ def create
   redirect_to '/contact'
  else
   flash[:warning] = "Invalid Username or Password"
-  redirect_to '/admin/login'
+  raise ActionController::RoutingError.new('Not Found')
  end
 end
 
  def destroy
   session[:admin_id] = nil
   flash[:success] = "Successfully Logged Out!"
-  redirect_to '/admin/login'
+  raise ActionController::RoutingError.new('Not Found')
  end
 end
