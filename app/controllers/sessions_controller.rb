@@ -7,7 +7,7 @@ def create
  if admin && admin.authenticate(params[:password])
   session[:admin_id] = admin.id
   flash[:success] = "Successfully Logged In!"
-  redirect_to '/contact'
+  redirect_to '/orders'
  else
   flash[:warning] = "Invalid Username or Password"
   raise ActionController::RoutingError.new('Not Found')
@@ -17,6 +17,6 @@ end
  def destroy
   session[:admin_id] = nil
   flash[:success] = "Successfully Logged Out!"
-  raise ActionController::RoutingError.new('Not Found')
+  redirect_to '/'
  end
 end
