@@ -8,7 +8,6 @@
 ### 90s streetwear e-commerce <br /><br /><br />
 
 
-
 ##### Ruby on Rails | SQL | Javascript 
 
 An e-commerce streetwear web app specializing in 90’s inspired tees.
