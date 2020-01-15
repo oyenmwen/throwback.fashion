@@ -12,7 +12,7 @@ def create
     if admin.save
       session[:admin_id] = admin.id
       flash[:success] = "Successfully created an Admin!"
-      redirect_to '/contact'
+      redirect_to '/orders'
     else
       flash[:warning] = "Invalid Email or Password"
       redirect_to '/admin/signup'
