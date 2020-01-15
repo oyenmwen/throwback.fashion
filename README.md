@@ -1,4 +1,4 @@
-##  Throwback Fashion  🛒 🌐
+##  Throwback Fashion      🛒 🌐
 
 ![http://throwback.fashion](https://i.imgur.com/iKjmsJ8.png) <br /><br />
 
