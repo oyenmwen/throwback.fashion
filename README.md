@@ -1,4 +1,4 @@
-##  Throwback Fashion  🏀 📦
+##  Throwback Fashion  👕🛒🌐
 
 ![http://throwback.fashion](https://i.imgur.com/iKjmsJ8.png) <br /><br />
 
@@ -13,11 +13,9 @@
 
 An e-commerce streetwear web app specializing in 90’s inspired tees.
 
-Full fledged shopping experience. Admin authorizations, salting and password hashing, payments, 
+Full fledged shopping experience. Admin authorizations, salting & password hashing, 
 
-PostgreSQL database integrations, emailing, MVC. Sole development & UX design.
-
-(Ruby on Rails, JS, Bootstrap, SQL) <br /><br /><br />
+payments, PostgreSQL database integrations, emailing, MVC.<br /><br /><br />
 
 
 
