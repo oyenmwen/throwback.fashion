@@ -1,3 +1,9 @@
+html,body{
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height:100%; /*A value other than height:auto needs to be set*/
+
+}
 .btn{
   color:white !important;
 }
@@ -13,6 +19,11 @@ a:hover{
   #logo{
     width:110%;
     height: auto;
+  }
+
+  .main{
+    padding-bottom: 60%;
+
   }
 
   img{

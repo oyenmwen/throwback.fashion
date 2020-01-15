@@ -1,9 +1,20 @@
+
+html,body{
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height:100%; /*A value other than height:auto needs to be set*/
+
+}
+
 a{
   font-family: "Roboto",sans-serif;
 }
 
 @media only screen and (max-width: 600px) {
+  .main{
+    padding-bottom: 20%;
 
+  }
   .purchase-img{
     width: 15% !important;
   }

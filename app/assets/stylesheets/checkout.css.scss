@@ -1,3 +1,10 @@
+html,body{
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height:100%; /*A value other than height:auto needs to be set*/
+
+}
+
 h6{
   font-family: 'Arial',sans-serif;
 }

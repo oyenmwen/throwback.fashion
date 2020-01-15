@@ -36,7 +36,6 @@ $(document).ready(function() {
         subtotal += price;
         $('#items').append(`
           <li class="list-group-item d-flex justify-content-between checkout lh-condensed">
-          <img src=${item.img}>
             <div class="mx-md-3">
               <h5 class="my-0">${item.title}</h5>
               <small class="text-muted">Size: ${item.size} | Quantity: ${item.qty} </small>

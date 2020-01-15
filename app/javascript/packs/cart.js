@@ -71,7 +71,7 @@ $(document).ready(function() {
           <div class="col col-md-2 mt-md-5 col-12 title">
           ${item.title}
           </div>
-          <div class="col col-md-1 mt-md-5 col-12 size">
+          <div class="col col-md-1 mt-md-5 my-1 col-12 size">
           ${item.size}
           </div>
           <div class="col col-md-1 ml-2 mt-md-5 col-12">
@@ -79,7 +79,7 @@ $(document).ready(function() {
           ${options}
           </select>
           </div>
-          <div class="col col-md-1 mt-md-5 price col-12">
+          <div class="col col-md-1 mt-md-5 my-1 price col-12">
           $${price.toFixed(2)}
           </div>
           </div>

@@ -1,4 +1,10 @@
 @import 'bootstrap/dist/css/bootstrap';
+html,body{
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+  height:100%; /*A value other than height:auto needs to be set*/
+
+}
 
 img{
   width: 85%;
