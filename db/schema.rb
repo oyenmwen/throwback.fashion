@@ -23,14 +23,14 @@ ActiveRecord::Schema.define(version: 2020_01_13_210642) do
   create_table "orders", force: :cascade do |t|
     t.integer "product_id", null: false
     t.integer "size_id", null: false
-    t.integer "user_id", null: false
+    # t.integer "user_id", null: false
     t.integer "qty"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "ord_id"
     t.index ["product_id"], name: "index_orders_on_product_id"
     t.index ["size_id"], name: "index_orders_on_size_id"
-    t.index ["user_id"], name: "index_orders_on_user_id"
+    # t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -64,5 +64,5 @@ ActiveRecord::Schema.define(version: 2020_01_13_210642) do
 
   add_foreign_key "orders", "products"
   add_foreign_key "orders", "sizes"
-  add_foreign_key "orders", "users"
+  # add_foreign_key "orders", "users"
 end
