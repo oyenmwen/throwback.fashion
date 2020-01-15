@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_13_210642) do
+ActiveRecord::Schema.define(version: 2020_01_15_083000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,20 @@ ActiveRecord::Schema.define(version: 2020_01_13_210642) do
     t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "order_id"
+    t.string "tracking_no"
+    t.bigint "product_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "size_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "qty"
+    t.index ["product_id"], name: "index_orders_on_product_id"
+    t.index ["size_id"], name: "index_orders_on_size_id"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", force: :cascade do |t|
@@ -52,4 +66,7 @@ ActiveRecord::Schema.define(version: 2020_01_13_210642) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "orders", "products"
+  add_foreign_key "orders", "sizes"
+  add_foreign_key "orders", "users"
 end
