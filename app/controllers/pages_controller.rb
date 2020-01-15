@@ -23,16 +23,16 @@ def order_success
   @user.state = @@state
   @user.zip = @@zip
   @user.save
-  @ord_id= SecureRandom.hex(8)
-  while Order.find_by(ord_id: @ord_id) != nil
-    @ord_id= SecureRandom.hex(8)
+  @order_id= SecureRandom.hex(8)
+  while Order.find_by(order_id: @order_id) != nil
+    @order_id= SecureRandom.hex(8)
   end
   @items = @@items
   @mail_html="<html><body>
   <img src='https://i.imgur.com/LwHttnp.png' width='250' height='100'>
   <h1>Thank you for your order #{@@first_name}!</h1>
   <h3>Your order details:</h3>
-  <h4>Order number <strong>#{@ord_id}</strong></h4>
+  <h4>Order number <strong>#{@order_id}</strong></h4>
   <p>#{@@first_name} #{@@last_name}</p>
   <p>#{@@address} #{@@address_two}</p>
   <p>#{@@zip} #{@@state} #{@@country} </p><hr>
@@ -43,7 +43,7 @@ def order_success
     @order.product = Product.find_by(title: e[:title])
     @order.size = Size.find_by(size: e[:size])
     @order.qty = e[:qty]
-    @order.ord_id = @ord_id
+    @order.order_id = @order_id
     @order.save
     @mail_html+="<p><img src = '#{e[:img]}'width='120' height='140'> #{e[:title]}, Size: #{e[:size]}, Quantity: #{e[:qty]}</p><hr>"
   end
@@ -53,7 +53,7 @@ def order_success
 <h4><strong>If you have any further questions please email us at contact@throwback.vintage! :)</strong></h4></body></html>"
   from = Email.new(email: 'noreply@throwback.fashion')
   to = Email.new(email: @@email)
-  subject = "Thank You!! Order #{@ord_id}"
+  subject = "Thank You!! Order #{@order_id}"
   content = Content.new(type: 'text/html', value: @mail_html)
   mail = Mail.new(from, subject, to, content)
 
