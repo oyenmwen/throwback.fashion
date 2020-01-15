@@ -1,25 +1,6 @@
 <%= javascript_pack_tag 'pyramid' %>
 
-<!-- <nav class="navbar navbar-expand-lg text-center desktop-gone">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon" style="color:black"></span>
-  </button>
-  <div class="collapse navbar-collapse text-center"  id="navbarNav">
-    <ul class="navbar-nav text-center">
-
-      <li class="nav-item">
-        <a class="nav-link" href="/">Products</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/contact">Contact</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link " href="/cart">Cart</a>
-      </li>
-    </ul>
-  </div>
-</nav> -->
-<%=link_to image_tag("tf.png", class:"my-md-4 mb-md-5", id:"logo" ),"/"%>
+<%=link_to image_tag("tf.png", class:"my-md-4 mb-md-5", id:"logo", alt:"Throwback Fashion's Logo" ),"/"%>
 <div class="py-2 fixed-top side-nav mobile-gone">
                 <div class="nav flex-wrap flex-sm-column">
                     <a href="/" class="nav-link d-none d-sm-inline">Home</a>
@@ -27,7 +8,7 @@
                     <!-- <a href="" class="nav-link">About</a> -->
                     <a href="/contact" class="nav-link">Contact</a>
                     <a  class=" mt-md-5 nav-link ">Free Shipping</a>
-                    <a href="https://www.instagram.com/izdwco/" target="_blank" class=" mb-md-5 pb-md-5 nav-link">Instagram</a>
+                    <a href="https://www.instagram.com/izdwco/" target="_blank" rel="noopener" class=" mb-md-5 pb-md-5 nav-link">Instagram</a>
                     <a  class="copyright nav-link ">© <em class="text-sm">TF 2020</em></a>
                 </div>
         </div>
@@ -57,5 +38,5 @@
   <!-- <a href="/">About</a> -->
   <a href="/contact">Contact</a>
 </div>
-  <img src= "/assets/bars-solid.svg" class="iconify desktop-gone logo" data-icon="octicon:three-bars" data-inline="false" onclick="openNav()" id="openbtn">
+  <img src= "/bars-solid.svg" class="iconify desktop-gone logo" alt="Button used to toggle navigation menu" data-icon="octicon:three-bars" data-inline="false" onclick="openNav()" id="openbtn">
 <!-- Use any element to open the sidenav -->

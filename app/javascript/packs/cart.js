@@ -66,7 +66,7 @@ $(document).ready(function() {
           <hr>
           <div class="row text-center">
           <div class="col col-md-2 col-12">
-          <img src="/${item.title}.png"/>
+          <img src="${item.img}"/ alt="${item.title}">
           </div>
           <div class="col col-md-2 mt-md-5 col-12 title">
           ${item.title}
