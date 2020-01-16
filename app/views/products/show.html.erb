@@ -13,19 +13,19 @@
   <h3 class="font-weight-bold my-md-4" id="product-title"><%=@product.title%></h3>
 
   <h4 class="font-weight-bolder my-3" style="font-weight:800" id="product-price">$<%=@product.price%></h4>
-  <p id="product-description" class="py-3">
+  <p id="product-description" class="py-1">
     <%= @product.description %>
   </p>
-  <label for="size">Select a size:
-    <select id="size" name="size">
-    <% @sizes.each do |size|  %>
-    <option value="<%= size.size %>"><%= size.size %></option>
-    <% end %>
-  </select>
-</label>
-<br>
-    <a href="/cart" class="add-item mt-4 btn-block btn btn-lg btn-primary">Buy Now</a>
-    <a  href=""  class=" add-item btn btn-lg btn-block btn-secondary">Add to Cart</a>
+  <div class="form-group">
+    <label class="mb-2" for="size">Select a size:</label>
+    <select class="form-control" id="size" name="size">
+      <% @sizes.each do |size|  %>
+      <option value="<%= size.size %>"><%= size.size %></option>
+      <% end %>
+    </select>
+  </div>
+    <a href="/cart" class="add-item py-3 btn-block btn btn-lg btn-primary">Buy Now</a>
+    <a  href=""  class=" add-item btn py-3 btn-lg btn-block btn-secondary">Add to Cart</a>
 
 </div>
   </div>

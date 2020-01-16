@@ -1,20 +1,47 @@
 // Place all the styles related to the Products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+@font-face {
+    font-family: 'Windows 95';
+    src: url('/fonts/w-95-sans-serif.woff2') format('woff2'),
+        url('/fonts/w-95-sans-serif.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 img{
   // width:50%;
 }
 
 #product-price{
-  // font-weight: 800;
+  font-weight: 800;
+  font-family: "Arial";
 }
+.form-group label, .form-group select{
+  font-family: 'Source Code Pro', monospace;
 
+  font-size: 1em !important;
+}
 .show{
-  text-align: center;
+  text-align: left;
   padding-bottom: 45%;
 }
 
 #product-description{
   text-align: justify;
 
+}
+
+.btn{
+  font-family: 'Windows 95', monospace;
+  font-size: 0.7em;
+}
+
+.btn-primary{
+  color: black !important;
+}
+
+#product-title{
+font-family: "Arial";
 }

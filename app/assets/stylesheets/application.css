@@ -14,13 +14,19 @@
  *= require_tree .
  *= require_self
  */
+
+
  html,body{
    overflow-y: scroll;
    -webkit-overflow-scrolling: touch;
    height:100%; /*A value other than height:auto needs to be set*/
 
  }
- 
+
+ h1,h2,h3,h4,h5,h6{
+   font-family: "Arial", sans-serif;
+ }
+
 canvas{
 
   position: fixed;
