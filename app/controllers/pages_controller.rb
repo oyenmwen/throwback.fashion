@@ -78,7 +78,7 @@ def purchase
     @line.push({
       name: e[:title],
       description: e[:size],
-      images: ["#{e[:img]}"],
+      images: ["/#{e[:img]}"],
       amount: 2999,
       currency: 'usd',
       quantity: e[:qty],
